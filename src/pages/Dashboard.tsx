@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { FileText, Users, FileContract, BarChart } from 'lucide-react';
+import { FileText, Users, FileCheck, BarChart } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { StatCard } from '@/components/dashboard/StatCard';
 import { RecentRfqTable } from '@/components/dashboard/RecentRfqTable';
@@ -36,7 +36,7 @@ const Dashboard: React.FC = () => {
           title="Contracts" 
           value="32" 
           description="4 due for renewal" 
-          icon={<FileContract className="h-5 w-5" />}
+          icon={<FileCheck className="h-5 w-5" />} // Updated to FileCheck here
           trend={{ value: 5, isPositive: true }}
         />
         <StatCard 

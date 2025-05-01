@@ -6,7 +6,7 @@ import {
   Home, 
   FileText, 
   Users, 
-  FileContract, 
+  FileCheck, // Replaced FileContract with FileCheck
   BarChart,
   Settings,
 } from 'lucide-react';
@@ -36,7 +36,7 @@ const navItems: NavItem[] = [
   {
     title: 'Contracts',
     href: '/contracts',
-    icon: FileContract,
+    icon: FileCheck, // Updated icon here as well
   },
   {
     title: 'Analytics',

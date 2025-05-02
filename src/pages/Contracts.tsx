@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { 
@@ -19,6 +20,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ContractSpendDashboard } from '@/components/contracts/ContractSpendDashboard';
+import { useNavigate } from 'react-router-dom';
 
 // Sample data for contracts
 const contracts = [
@@ -87,13 +89,18 @@ const getStatusBadge = (status: string) => {
 
 const Contracts: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("overview");
+  const navigate = useNavigate();
+
+  const handleNewContract = () => {
+    navigate('/contracts/new');
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold tracking-tight">Contract Management</h1>
         <div className="flex space-x-2">
-          <Button>New Contract</Button>
+          <Button onClick={handleNewContract}>New Contract</Button>
           <Button variant="outline">Import Contracts</Button>
         </div>
       </div>

@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import RfqManagement from "./pages/RfqManagement";
 import Suppliers from "./pages/Suppliers";
 import Contracts from "./pages/Contracts";
+import NewContract from "./pages/NewContract";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
@@ -54,6 +55,7 @@ const AppRoutes = () => {
           <Route path="/rfq" element={<RfqManagement />} />
           <Route path="/suppliers" element={<Suppliers />} />
           <Route path="/contracts" element={<Contracts />} />
+          <Route path="/contracts/new" element={<NewContract />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/settings" element={<Settings />} />
         </Route>

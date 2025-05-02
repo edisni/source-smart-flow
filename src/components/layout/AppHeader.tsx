@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bell, Search, Settings } from 'lucide-react';
+import { Bell, Search, Settings, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -13,8 +13,29 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useAuth } from '@/context/AuthContext';
 
 const AppHeader: React.FC = () => {
+  const { user, signOut } = useAuth();
+  
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
+  
+  const userInitials = user?.user_metadata?.full_name 
+    ? getInitials(user.user_metadata.full_name) 
+    : user?.email 
+      ? user.email.substring(0, 2).toUpperCase() 
+      : 'U';
+
+  const userEmail = user?.email || '';
+  const userName = user?.user_metadata?.full_name || userEmail;
+  
   return (
     <header className="border-b bg-white sticky top-0 z-30">
       <div className="flex h-16 items-center px-4 justify-between">
@@ -46,27 +67,28 @@ const AppHeader: React.FC = () => {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                 <Avatar className="h-9 w-9">
-                  <AvatarImage src="/placeholder.svg" alt="User" />
-                  <AvatarFallback>JD</AvatarFallback>
+                  <AvatarImage src="/placeholder.svg" alt={userName} />
+                  <AvatarFallback>{userInitials}</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium">John Doe</p>
-                  <p className="text-xs text-muted-foreground">john.doe@company.com</p>
+                  <p className="text-sm font-medium">{userName}</p>
+                  <p className="text-xs text-muted-foreground">{userEmail}</p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                Profile Settings
+              <DropdownMenuItem asChild>
+                <Link to="/settings">Profile Settings</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                Preferences
+              <DropdownMenuItem asChild>
+                <Link to="/settings">Preferences</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => signOut()} className="text-red-600">
+                <LogOut className="mr-2 h-4 w-4" />
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { 
@@ -26,6 +27,7 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
+import { Upload, File } from 'lucide-react';
 
 const Settings: React.FC = () => {
   return (
@@ -36,8 +38,9 @@ const Settings: React.FC = () => {
       </div>
       
       <Tabs defaultValue="general">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="general">General</TabsTrigger>
+          <TabsTrigger value="suppliers">Supplier Data</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
           <TabsTrigger value="api">API & Integrations</TabsTrigger>
           <TabsTrigger value="team">Team Management</TabsTrigger>
@@ -120,6 +123,82 @@ const Settings: React.FC = () => {
                     </div>
                   </div>
                   <Switch defaultChecked />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="suppliers" className="space-y-4 mt-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Supplier Data Management</CardTitle>
+              <CardDescription>
+                Import and manage supplier information for use across all system modules
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                  <Upload className="h-10 w-10 mx-auto text-gray-400" />
+                  <h3 className="mt-2 text-sm font-medium text-gray-900">Upload Supplier Data</h3>
+                  <p className="mt-1 text-xs text-gray-500">CSV, XLS or XLSX up to 10MB</p>
+                  <div className="mt-4">
+                    <Input
+                      id="file-upload"
+                      type="file"
+                      accept=".csv,.xls,.xlsx"
+                      className="hidden"
+                    />
+                    <label htmlFor="file-upload">
+                      <Button size="sm" className="mr-2" asChild>
+                        <span>Choose File</span>
+                      </Button>
+                    </label>
+                    <Button size="sm" variant="outline">
+                      Download Template
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-lg font-medium">Recent Imports</h3>
+                  <div className="bg-gray-50 rounded-md p-4">
+                    <div className="flex items-center gap-3">
+                      <File className="h-5 w-5 text-blue-500" />
+                      <div className="flex-1">
+                        <p className="text-sm font-medium">suppliers_2025_05_20.csv</p>
+                        <p className="text-xs text-gray-500">42 suppliers imported • May 20, 2025</p>
+                      </div>
+                      <Badge className="bg-green-500">Processed</Badge>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-lg font-medium">Data Quality Settings</h3>
+                  
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-medium">Duplicate Check</div>
+                      <div className="text-sm text-muted-foreground">
+                        Automatically check for duplicate supplier records
+                      </div>
+                    </div>
+                    <Switch defaultChecked />
+                  </div>
+                  
+                  <Separator className="my-3" />
+                  
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-medium">Required Fields Validation</div>
+                      <div className="text-sm text-muted-foreground">
+                        Ensure all required supplier fields are populated
+                      </div>
+                    </div>
+                    <Switch defaultChecked />
+                  </div>
                 </div>
               </div>
             </CardContent>

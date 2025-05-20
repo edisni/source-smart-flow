@@ -18,6 +18,15 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 
+// New Pages for the restructured navigation
+import SupplierEvaluation from "./pages/SupplierEvaluation";
+import SupplierSelection from "./pages/SupplierSelection";
+import SupplierPerformance from "./pages/SupplierPerformance";
+import RiskManagement from "./pages/RiskManagement";
+import CategoryStrategy from "./pages/CategoryStrategy";
+import PurchasingKPI from "./pages/PurchasingKPI";
+import Trainings from "./pages/Trainings";
+
 // Layouts
 import AppLayout from "./components/layout/AppLayout";
 
@@ -51,12 +60,26 @@ const AppRoutes = () => {
             <AppLayout />
           </ProtectedRoute>
         }>
+          {/* Main sections */}
           <Route path="/dashboard" element={<Dashboard />} />
+          
+          {/* RFQ to Source */}
           <Route path="/rfq" element={<RfqManagement />} />
-          <Route path="/suppliers" element={<Suppliers />} />
+          <Route path="/supplier-evaluation" element={<SupplierEvaluation />} />
+          <Route path="/supplier-selection" element={<SupplierSelection />} />
+          
+          {/* SRM */}
           <Route path="/contracts" element={<Contracts />} />
           <Route path="/contracts/new" element={<NewContract />} />
-          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/supplier-performance" element={<SupplierPerformance />} />
+          <Route path="/risk-management" element={<RiskManagement />} />
+          
+          {/* Strategy and Team */}
+          <Route path="/category-strategy" element={<CategoryStrategy />} />
+          <Route path="/purchasing-kpi" element={<PurchasingKPI />} />
+          <Route path="/trainings" element={<Trainings />} />
+          
+          {/* Settings */}
           <Route path="/settings" element={<Settings />} />
         </Route>
         

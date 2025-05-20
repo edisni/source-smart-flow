@@ -26,6 +26,7 @@ import RiskManagement from "./pages/RiskManagement";
 import CategoryStrategy from "./pages/CategoryStrategy";
 import PurchasingKPI from "./pages/PurchasingKPI";
 import Trainings from "./pages/Trainings";
+import CostManagement from "./pages/CostManagement";
 
 // Layouts
 import AppLayout from "./components/layout/AppLayout";
@@ -74,8 +75,11 @@ const AppRoutes = () => {
           <Route path="/supplier-performance" element={<SupplierPerformance />} />
           <Route path="/risk-management" element={<RiskManagement />} />
           
-          {/* Strategy and Team */}
+          {/* Strategy & Cost */}
           <Route path="/category-strategy" element={<CategoryStrategy />} />
+          <Route path="/cost-management" element={<CostManagement />} />
+          
+          {/* Team & Orgs */}
           <Route path="/purchasing-kpi" element={<PurchasingKPI />} />
           <Route path="/trainings" element={<Trainings />} />
           

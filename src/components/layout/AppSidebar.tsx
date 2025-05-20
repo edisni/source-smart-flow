@@ -6,11 +6,12 @@ import {
   Home,
   FileText,
   Users,
-  FileCheck,
   BarChart,
   Settings,
   ChevronDown,
   ChevronRight,
+  Building2,
+  DollarSign,
 } from 'lucide-react';
 
 type NavSubItem = {
@@ -50,10 +51,17 @@ const navItems: NavItem[] = [
     ]
   },
   {
-    title: 'Strategy and Team',
+    title: 'Strategy & Cost',
     icon: BarChart,
     subItems: [
       { title: 'Category Strategy Builder', href: '/category-strategy' },
+      { title: 'Cost Management', href: '/cost-management' },
+    ]
+  },
+  {
+    title: 'Team & Orgs',
+    icon: Building2,
+    subItems: [
       { title: 'Purchasing KPI', href: '/purchasing-kpi' },
       { title: 'Trainings', href: '/trainings' },
     ]
